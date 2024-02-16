@@ -16,13 +16,13 @@ public class Main {
 
         System.out.println();
 
-        Inimene esimeneInimene = new Inimene("Mart", 45, 85.3, 1.83);
-        Inimene teineInimene = new Inimene("Kadri", 15, 51.2, 1.62);
+        Inimene esimeneInimene = new Inimene("Mart", 1962, 85.3, 1.83);
+        Inimene teineInimene = new Inimene("Kadri", 2002, 51.2, 1.62);
 
-        String esimeseInimeseNoorus = esimeneInimene.inimeseNooruseMaaramine();
-        System.out.println(esimeseInimeseNoorus);
-        String teiseInimeseNoorus = teineInimene.inimeseNooruseMaaramine();
-        System.out.println(teiseInimeseNoorus);
+        String esimeseInimesePolvkond = esimeneInimene.inimesePolvkonnadMaaramine();
+        System.out.println(esimeseInimesePolvkond);
+        String teiseInimesePolvkond = teineInimene.inimesePolvkonnadMaaramine();
+        System.out.println(teiseInimesePolvkond);
 
         double esimeseInimeseBMI = esimeneInimene.inimeseBMIArvutus();
         System.out.println(Math.round(esimeseInimeseBMI * 100.0) / 100.0);

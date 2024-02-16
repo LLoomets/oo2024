@@ -1,28 +1,34 @@
 public class Inimene {
 
     String inimeseNimi;
-    int inimeseVanus;
+    int inimeseSunniAasta;
     double inimeseKaal;
     double inimesePikkusMeetrites;
 
-    public Inimene(String inimeseNimi, int inimeseVanus, double inimeseKaal, double inimesePikkusMeetrites) {
+    public Inimene(String inimeseNimi, int inimeseSunniAasta, double inimeseKaal, double inimesePikkusMeetrites) {
         this.inimeseNimi = inimeseNimi;
-        this.inimeseVanus = inimeseVanus;
+        this.inimeseSunniAasta = inimeseSunniAasta;
         this.inimeseKaal = inimeseKaal;
         this.inimesePikkusMeetrites = inimesePikkusMeetrites;
     }
 
-    public String inimeseNooruseMaaramine(){
-        if (inimeseVanus >= 65){
-            return "Pensionär";
-        } else if (inimeseVanus >= 40){
-            return "Keskealine";
-        } else if (inimeseVanus >= 20){
-            return "Täiskasvanu";
-        } else if (inimeseVanus >= 12) {
-            return "Teismeline";
+    public String inimesePolvkonnadMaaramine(){
+        if (inimeseSunniAasta >= 2013){
+            return "Põlvkond alfa";
+        } else if (inimeseSunniAasta >= 1997){
+            return "Põlvkond Z";
+        } else if (inimeseSunniAasta >= 1981){
+            return "Põlvkond Y / millenniumi põlvkond";
+        } else if (inimeseSunniAasta >= 1965) {
+            return "Põlvkond X";
+        } else if (inimeseSunniAasta >= 1946) {
+            return "Beebibuumer";
+        } else if (inimeseSunniAasta >= 1928) {
+            return "Vaikne põlvkond";
+        } else if (inimeseSunniAasta >= 1901) {
+            return "Parim põlvkond (G.I. põlvkond)";
         } else {
-            return "Junsu";
+            return "Kadunud põlvkond";
         }
     }
 
