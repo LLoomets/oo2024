@@ -5,6 +5,7 @@ public class Mangija {
     int yCoord; // parem klõps -> refactor -> rename ja muudab kõikjal
     char symbol;
     Suund suund;
+    Ese ese; // klassikomplekt, algväärtus null
 
     // counstructor alati public (klassil saab valida), sama nimetusega kui klass
     public Mangija(Random random, int kaardiKorgus, int kaardiLaius) {
