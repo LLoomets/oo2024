@@ -1,11 +1,11 @@
 import java.util.Random;
 
-public class Mangija {
-    int xCoord; // deklareerin (loob + mälukoht)
-    int yCoord; // parem klõps -> refactor -> rename ja muudab kõikjal
-    char symbol;
+// tegelase seest tulevad kõik omadused ja funktsioonid
+// igal klassil saab olla üks ülem klass
+public class Mangija extends Tegelane implements JuhuslikKoordinaat {
     Suund suund;
     Ese ese; // klassikomplekt, algväärtus null
+    Soiduk soiduk;
 
     // counstructor alati public (klassil saab valida), sama nimetusega kui klass
     public Mangija(Random random, int kaardiKorgus, int kaardiLaius) {
@@ -27,19 +27,19 @@ public class Mangija {
                 if(yCoord > 1) yCoord--;
             }
             case ALLA -> {
-                if(yCoord < maailm.kaardiKorgus - 1) yCoord++;
+                if(yCoord < maailm.kaardiKorgus - 2) yCoord++;
             }
             case VASAKULE -> {
                 if(xCoord > 1) xCoord--;
             }
             case PAREMALE -> {
-                if(xCoord < maailm.kaardiLaius - 1) xCoord++;
+                if(xCoord < maailm.kaardiLaius - 2) xCoord++;
             }
         } // <-- switch() kinniminek
     } // <-- liigu() kinniminek
 
     // klassides ei käi static
-    private int saaKoordinaat(Random random, int kaart) {
+    public int saaKoordinaat(Random random, int kaart) {
         return random.nextInt(1, kaart - 1);
     }
 } // <-- Mangija kinniminek

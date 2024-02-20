@@ -10,10 +10,16 @@ public class Main {
         //saab enda sisse terve hunniku funktsioone ja muutujaid
         Random random = new Random();
 
-        Maailm maailm = new Maailm(5,10);
+        Maailm maailm = new Maailm(5,10); // instantsi tegemine new
+        System.out.println(maailm);
+
         Mangija mangija = new Mangija(random, maailm.kaardiKorgus, maailm.kaardiLaius);
         Draakon draakon = new Draakon(random, maailm.kaardiKorgus, maailm.kaardiLaius);
         Ork ork = new Ork(random, maailm.kaardiKorgus, maailm.kaardiLaius);
+        List<Tegelane> tegelased = new ArrayList<>();
+        tegelased.add(mangija);
+        tegelased.add(draakon);
+        tegelased.add(ork);
 
         Ese m66k = new Ese("Mõõk",10,1, random, maailm);
         Ese haamer = new Ese("Haamer",5,3, random, maailm);
@@ -30,15 +36,25 @@ public class Main {
         //klass new liidesega (new suuralgustähega())
         Scanner scanner = new Scanner(System.in); // järgmine tund selgitame täpsemalt
 
-        maailm.prindiKaart(mangija, draakon, ork, esemed);
+        maailm.prindiKaart(tegelased, esemed);
         String sisend = scanner.nextLine();
 
         mangija.liigu(sisend, maailm);
 
         while (!sisend.equals("end")) { // .equals --> ==         !m.equals() --> !=
-            maailm.prindiKaart(mangija, draakon, ork, esemed);
+            maailm.prindiKaart(tegelased, esemed);
             sisend = scanner.nextLine();
             mangija.liigu(sisend, maailm);
+            for (Ese e : esemed){ // e on suvaline muutuja nimi
+                if (mangija.xCoord == e.xCoord && mangija.yCoord == e.yCoord) {
+                       mangija.ese = e;
+                    System.out.println("Korjasid üles eseme: " + e.nimetus);
+                       break;
+                }
+            }
+            //for (Soiduk s : soidukid){}
+
+            // JavaScript: esemed.forEach(e => {if (e.xCoord && e.yCoord)})
         }
 
     } // main(args)

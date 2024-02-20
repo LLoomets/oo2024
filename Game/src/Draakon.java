@@ -1,10 +1,6 @@
 import java.util.Random;
 
-public class Draakon {
-    int xCoord; // deklareerin (loob + mälukoht)
-    int yCoord; // parem klõps -> refractor -> rename ja muudab kõikjal
-    char symbol;
-
+public class Draakon extends Tegelane {
     public Draakon(Random random, int kaardiKorgus, int kaardiLaius) {
         xCoord = saaKoordinaat(random, kaardiLaius); // initsialiseerin (annan esimest korda väärtuse)
         yCoord = saaKoordinaat(random, kaardiKorgus);
