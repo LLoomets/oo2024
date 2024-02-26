@@ -11,6 +11,13 @@ public class Soiduk {
         this.kiirus = kiirus;
         this.nimetus = nimetus;
         // this.xCoord = saaKoordinaat();
+        xCoord = saaKoordinaat(random, maailm.kaardiLaius);
+        yCoord = saaKoordinaat(random, maailm.kaardiKorgus);
         this.symbol = 'S';
     }
+
+    private int saaKoordinaat(Random random, int kaart) {
+        return random.nextInt(1, kaart - 1);
+    }
+
 }
