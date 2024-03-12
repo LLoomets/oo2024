@@ -13,14 +13,14 @@ public class Main {
             System.out.println(rida);
             String[] s6nad = rida.split(" ");
             // @4c873330 <-- kui tekib konsooli, siis see on mälukoht
-            System.out.println(Arrays.toString(s6nad));
-            System.out.println("Rida läbi");
+            //System.out.println(Arrays.toString(s6nad));
+            //System.out.println("Rida läbi");
 
-            double ruutu = Math.pow(s6nad.length, 2);
+            /*double ruutu = Math.pow(s6nad.length, 2);
             System.out.println(ruutu);
 
             double ruutjuur = Math.sqrt(s6nad.length);
-            System.out.println(ruutjuur);
+            System.out.println(ruutjuur);*/
 
             rida = br.readLine();
         }
