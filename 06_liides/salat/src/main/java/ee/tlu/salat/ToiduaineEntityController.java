@@ -8,14 +8,17 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:3000")  // see ütleb mis rakendus mulle ligi pääseb
 
 public class ToiduaineEntityController {
 
     // ["Kartul", "Vorst"];
     // [{nimi: "Kartul", valk: 0}, {nimi: "Vorst"}]
 
-    ToiduaineRepository toiduaineRepository;
+    ToiduaineRepository toiduaineRepository; // ühendan Repository, et saaks ligi andmebaasi päringutele
+    // imitatsioon: ToiduaineRepository toiduaineRepository = new ToiduaineRepository();
 
+    // Dependency Injection
     public ToiduaineEntityController(ToiduaineRepository toiduaineRepository) {
         this.toiduaineRepository = toiduaineRepository;
     }
