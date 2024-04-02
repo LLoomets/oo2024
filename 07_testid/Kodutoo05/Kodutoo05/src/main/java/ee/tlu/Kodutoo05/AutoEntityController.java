@@ -35,6 +35,7 @@ public class AutoEntityController {
         return autoRepository.findAll();
     }
 
+    // localhost:8080/api/autod/Honda
     @DeleteMapping("autod/{tootja}")
     public List<AutoEntity> kustutaAuto(@PathVariable String tootja) {
         autoRepository.deleteById(tootja);
@@ -43,13 +44,14 @@ public class AutoEntityController {
 
     @PutMapping("autod")
     public List<AutoEntity> muudaAuto(
+            @PathVariable int index,
             @PathVariable String tootja,
             @PathVariable String mudel,
             @PathVariable int aasta,
             @PathVariable int labisoit
     ) {
-        AutoEntity toiduaine = new AutoEntity(tootja, mudel, aasta, labisoit);
-        autoRepository.save(toiduaine);
+        AutoEntity auto = new AutoEntity(tootja, mudel, aasta, labisoit);
+        autoRepository.save(auto);
         return autoRepository.findAll();
     }
 
