@@ -31,6 +31,18 @@ public class AutoEntityController {
         return autoRepository.findAll();
     }
 
+    @PostMapping("autod/{tootja}/{mudel}/{aasta}/{labisoit}")
+    public List<AutoEntity> lisaAuto(
+            @PathVariable String tootja,
+            @PathVariable String mudel,
+            @PathVariable int aasta,
+            @PathVariable int labisoit
+        ) {
+        AutoEntity auto = new AutoEntity(tootja, mudel, aasta, labisoit);
+        autoRepository.save(auto);
+        return autoRepository.findAll();
+    }
+
     // localhost:8080/api/autod/Honda
     @DeleteMapping("autod/{tootja}")
     public List<AutoEntity> kustutaAuto(@PathVariable String tootja) {
