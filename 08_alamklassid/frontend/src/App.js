@@ -10,6 +10,10 @@ function App() {
   const rasvRef = useRef();
   const sysivesikRef = useRef();
 
+  const [toidukomponendid, setToidukomponendid] = useState([]);
+  const taNimiRef = useRef(); // inputi luger, mis loeb HTMLst mida kirjutati
+  const kogusRef = useRef();
+
   // reacti hookid: use eesliidesega, neid peab importima. Reacti erikood
   // Springis annotatsioonid: @RestController, @GetMapping. neid peab importima. Springi erikood
 
@@ -23,12 +27,28 @@ function App() {
       }) // body
   }, []);
 
+  useEffect(() => {
+    fetch("http://localhost:8080/toidukomponendid")
+      .then(response => response.json())
+      .then(json => {
+        setToidukomponendid(json);
+      })
+  }, []);
+
   function kustuta(primaarvoti) {
     fetch("http://localhost:8080/api/toiduained/" + primaarvoti, {"method": "DELETE"})
       .then(response => response.json())
       .then(json => {
         setKogus(json.length);
         setToiduained(json);
+      })
+  }
+
+  function kustutaTK(primaarvoti) {
+    fetch("http://localhost:8080/toidukomponendid/" + primaarvoti, {"method": "DELETE"})
+      .then(response => response.json())
+      .then(json => {
+        setToidukomponendid(json);
       })
   }
 
@@ -56,6 +76,22 @@ function App() {
       })
   }
 
+  function lisaTK() {
+    const lisatavTK = {
+      "toiduaine": {"nimetus": taNimiRef.current.value},
+      "kogus": kogusRef.current.value
+    }
+    fetch("http://localhost:8080/toidukomponendid", {
+      "method": "POST", 
+      "body": JSON.stringify(lisatavTK), 
+      "headers": {"Content-Type": "application/json"}
+    })
+      .then(response => response.json())
+      .then(json => {
+        setToidukomponendid(json);
+      })
+  }
+
   return (
     <div className="App">
       Mul on {kogus} toiduainet
@@ -72,7 +108,18 @@ function App() {
       <button onClick={() => lisa()}>Sisesta</button> <br />
       <br />
 
-      {toiduained.map(t => <div>{t.nimetus} <button onClick={() => kustuta(t.nimetus)}>x</button> </div> )}
+      {toiduained.map(t => <div>{t.nimetus} | {t.valk} | {t.rasv} | {t.sysivesik} <button onClick={() => kustuta(t.nimetus)}>x</button> </div> )}
+      <hr />
+
+      <label>Toiduaine nimi (Täpne nimi andmebaasist)</label> <br/>
+      <input ref={taNimiRef} type="text" /> <br />
+      <label>Kogus</label> <br/>
+      <input ref={kogusRef} type="text" /> <br />
+      <button onClick={() => lisaTK()}>Sisesta</button> <br />
+      <br />
+
+      {toidukomponendid.map(tk => <div> {tk.id} | {tk.toiduaine?.nimetus} | {tk.kogus} <button onClick={() => kustutaTK(tk.id)}>x</button> </div> )}
+
     </div>
   );
 }

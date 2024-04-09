@@ -93,6 +93,16 @@ public class ToiduaineEntityController {
         return toiduaineRepository.findAll().size();
     }
 
+    @GetMapping("toiduaine-valk-min/{minValk}")
+    public List<ToiduaineEntity> toiduaineMinValk(@PathVariable int minValk) {
+        return toiduaineRepository.findAllByValkGreaterThan(minValk);
+    }
+
+    @GetMapping("toiduaine-sysivesik/{min}/{max}")
+    public List<ToiduaineEntity> toiduainedSysivesik(@PathVariable int min, @PathVariable int max) {
+        return toiduaineRepository.findAllBySysivesikBetween(min, max);
+    }
+
 }
 
 // PathVariable DELETE (get)

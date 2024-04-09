@@ -7,7 +7,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:3000")
 public class AutoEntityController {
 
     AutoRepository autoRepository;
@@ -24,15 +24,10 @@ public class AutoEntityController {
 
     // localhost:8080/api/autod/Toyota/Avensis/2006/250321
     // localhost:8080/api/autod/Volvo/V70/2000/440123
-    @PostMapping("autod/{tootja}/{mudel}/{aasta}/{labisoit}")
-    public List<AutoEntity> lisaAuto(
-            @PathVariable String tootja,
-            @PathVariable String mudel,
-            @PathVariable int aasta,
-            @PathVariable int labisoit
-            ) {
-        AutoEntity auto = new AutoEntity(tootja, mudel, aasta, labisoit);
-        autoRepository.save(auto);
+    @PostMapping("autod")
+    public List<AutoEntity> lisaAuto(@RequestBody AutoEntity autoEntity) {
+        //AutoEntity auto = new AutoEntity(tootja, mudel, aasta, labisoit);
+        autoRepository.save(autoEntity);
         return autoRepository.findAll();
     }
 
@@ -45,11 +40,11 @@ public class AutoEntityController {
 
     @PutMapping("autod")
     public List<AutoEntity> muudaAuto(
-            @PathVariable int index,
-            @PathVariable String tootja,
-            @PathVariable String mudel,
-            @PathVariable int aasta,
-            @PathVariable int labisoit
+            @RequestBody int index,
+            @RequestBody String tootja,
+            @RequestBody String mudel,
+            @RequestBody int aasta,
+            @RequestBody int labisoit
     ) {
         AutoEntity auto = new AutoEntity(tootja, mudel, aasta, labisoit);
         autoRepository.save(auto);
