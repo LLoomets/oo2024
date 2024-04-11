@@ -10,6 +10,10 @@ function App() {
   const aastaRef = useRef();
   const labisoitRef = useRef();
 
+  const [autoomanikud, setAutoomanikud] = useState([]);
+  const aTootjaRef = useRef();
+  const omanikRef = useRef();
+
   useEffect(() => {
     fetch("http://localhost:8080/api/autod")
       .then(response => response.json())
@@ -19,12 +23,28 @@ function App() {
       })
   }, []);
 
+  useEffect(() => {
+    fetch("http://localhost:8080/autoomanikud")
+      .then(response => response.json())
+      .then(json => {
+        setAutoomanikud(json);
+      })
+  }, []);
+
   function kustuta(primaarvoti) {
     fetch("http://localhost:8080/api/autod/" + primaarvoti, {"method": "DELETE"})
       .then(response => response.json())
       .then(json => {
         setKogus(json.length);
         setAutod(json);
+      })
+  }
+
+  function kustutaAO(primaarvoti) {
+    fetch("http://localhost:8080/autoomanikud/" + primaarvoti, {"method": "DELETE"})
+      .then(response => response.json())
+      .then(json => {
+        setAutoomanikud(json);
       })
   }
 
@@ -51,10 +71,26 @@ function App() {
       })
   }
 
+  function lisaAO() {
+    const lisatavAO = {
+      "auto": {"tootja": aTootjaRef.current.value},
+      "omanik": omanikRef.current.value
+    }
+    fetch("http://localhost:8080/autoomanikud", {
+      "method": "POST", 
+      "body": JSON.stringify(lisatavAO), 
+      "headers": {"Content-Type": "application/json"}
+    })
+      .then(response => response.json())
+      .then(json => {
+        setAutoomanikud(json);
+      })
+  }
+
 
   return (
     <div className="App">
-      Mul on {kogus} autot
+      Meil on laos {kogus} autot
       <br /><br />
 
       <label>Autotootja</label> <br />
@@ -73,6 +109,19 @@ function App() {
       <br />
 
       {autod.map(t => <div>{t.tootja} <button onClick={() => kustuta(t.tootja)}>x</button> </div> )}
+
+      <hr/>
+
+      <label>Tootja (Täpne nimi andmebaasist)</label><br />
+      <input ref={aTootjaRef} type='text' /> <br />
+
+      <label>Omanik</label><br />
+      <input ref={omanikRef} type='text' /> <br />
+
+      <button onClick={() => lisaAO()}>Sisesta</button> <br />
+      <br />
+
+      {autoomanikud.map(ao => <div>{ao.id} | {ao.auto?.tootja} | {ao.omanik} <button onClick={() => kustutaAO(ao.id)}>x</button> </div> )}
     
     </div>
   );
