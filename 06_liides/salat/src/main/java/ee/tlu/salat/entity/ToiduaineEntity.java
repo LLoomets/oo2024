@@ -1,4 +1,4 @@
-package ee.tlu.salat;
+package ee.tlu.salat.entity;
 
 // jpa moodulist pärinev. Hibernate
 // kui räägite chatgpt-ga -> import javax.persistence.Table
@@ -16,10 +16,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor // andmebaasi panekuks
 public class ToiduaineEntity {
     @Id // alati unikaalne - kustutamiseks, võtmiseks, muutmiseks
-    String nimetus;
-    int valk;
-    int rasv;
-    int sysivesik;
+    private String nimetus;
+    private int valk;
+    private int rasv;
+    private int sysivesik;
 
 
 //    public ToiduaineEntity(String nimetus, int valk, int rasv, int sysivesik) {

@@ -118,7 +118,7 @@ function App() {
       <button onClick={() => lisaTK()}>Sisesta</button> <br />
       <br />
 
-      {toidukomponendid.map(tk => <div> {tk.id} | {tk.toiduaine?.nimetus} | {tk.kogus} <button onClick={() => kustutaTK(tk.id)}>x</button> </div> )}
+      {toidukomponendid.map(tk => <div> {tk.id} | {tk.toiduaine?.nimetus} | {tk.toiduaine?.valk} | {tk.kogus} <button onClick={() => kustutaTK(tk.id)}>x</button> </div> )}
 
     </div>
   );
