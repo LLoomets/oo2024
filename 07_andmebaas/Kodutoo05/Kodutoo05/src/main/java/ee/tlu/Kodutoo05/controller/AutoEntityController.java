@@ -1,6 +1,8 @@
-package ee.tlu.Kodutoo05;
+package ee.tlu.Kodutoo05.controller;
 
 
+import ee.tlu.Kodutoo05.repository.AutoRepository;
+import ee.tlu.Kodutoo05.entity.AutoEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -68,7 +70,7 @@ public class AutoEntityController {
         List<AutoEntity> autod = autoRepository.findAll();
         int summa = 0;
         for(AutoEntity auto : autod) {
-            summa += auto.labisoit;
+            summa += auto.getLabisoit();
         }
         return summa;
     }

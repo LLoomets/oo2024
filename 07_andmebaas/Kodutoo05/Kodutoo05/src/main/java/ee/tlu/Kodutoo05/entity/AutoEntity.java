@@ -1,4 +1,4 @@
-package ee.tlu.Kodutoo05;
+package ee.tlu.Kodutoo05.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -14,10 +14,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AutoEntity {
     @Id
-    String tootja;
-    String mudel;
-    int aasta;
-    int labisoit;
+    private String tootja;
+    private String mudel;
+    private int aasta;
+    private int labisoit;
 
 //    public AutoEntity(String tootja, String mudel, int aasta, int labisoit) {
 //        this.tootja = tootja;

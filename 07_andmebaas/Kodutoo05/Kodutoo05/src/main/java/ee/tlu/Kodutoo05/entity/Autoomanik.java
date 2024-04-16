@@ -1,4 +1,4 @@
-package ee.tlu.Kodutoo05;
+package ee.tlu.Kodutoo05.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

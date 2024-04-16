@@ -1,5 +1,7 @@
-package ee.tlu.Kodutoo05;
+package ee.tlu.Kodutoo05.controller;
 
+import ee.tlu.Kodutoo05.repository.AutoomanikRepository;
+import ee.tlu.Kodutoo05.entity.Autoomanik;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
