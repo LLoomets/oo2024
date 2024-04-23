@@ -16,6 +16,7 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:3000/")
 public class RestTemplateController {
 
+    // http://localhost:8080/saa-tegevused
     @GetMapping("saa-tegevused")
     public List<Todo> getTodo() {
         RestTemplate restTemplate = new RestTemplate();
@@ -25,6 +26,7 @@ public class RestTemplateController {
         return  List.of(response.getBody());
     }
 
+    // http://localhost:8080/saa-tegevused/2
     @GetMapping("saa-tegevused/{kasutajaId}")
     public List<Todo> getUserTodo(@PathVariable int kasutajaId) {
 
