@@ -1,5 +1,6 @@
-package ee.tlu.proovikontrolltoo;
+package ee.tlu.proovikontrolltoo.Repository;
 
+import ee.tlu.proovikontrolltoo.Entity.Toode;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -14,6 +15,10 @@ public interface ToodeRepository extends JpaRepository<Toode, Long> {
     List<Toode> findByNimiContains(String nimi);
 
     List<Toode> findByNimiStartsWith(String nimi);
+
+    // Tahame listi toodetest, kategooria id järgi
+    List<Toode> findByKategooria_Id(Long id); // KategooriaController sees, vahet ei ole kus
+
 
 
 }

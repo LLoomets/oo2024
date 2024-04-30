@@ -20,6 +20,9 @@ public class Toidukomponent {
     @ManyToOne // kui kustutatakse toiduaine, siis kustuvad ka temaga seotud toidukomponendid
     ToiduaineEntity toiduaine;
 
+    //@ManyToOne
+    //Toit toit;
+
 //    @ManyToMany
 //    List<ToiduaineEntity> toiduained;
     int kogus;

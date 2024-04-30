@@ -21,6 +21,7 @@ public class Toit {
     @ManyToMany
     List<Toidukomponent> toidukomponendid;
     // [{"nimi": vorst, kogus: 100}, ....]
+
 }
 
 // GenerationType.IDENTITY --> 1, 2, 3, 4....

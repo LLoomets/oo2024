@@ -1,4 +1,4 @@
-package ee.tlu.proovikontrolltoo;
+package ee.tlu.proovikontrolltoo.Entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -20,3 +20,12 @@ public class Kategooria {
     //List<Toode> tooted;
 
 }
+
+// Tellimuste sees on tooted
+// Vanemate all on lapsed
+
+// Kategooriate all on tooted
+// 1. Kategooriat lisades lisada kõik tooted koos temaga
+// 2. Kategooriat lisades on tühi array
+//      Eraldi API otspunkt millega saab toodet sisestada
+// 3. Toodet lisades lisame ka kategooria

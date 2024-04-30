@@ -1,4 +1,4 @@
-package ee.tlu.proovikontrolltoo;
+package ee.tlu.proovikontrolltoo.Entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -19,4 +19,11 @@ public class Toode {
 
     @ManyToOne // paneme Kategooria Toode külge
     private Kategooria kategooria;
+
+    // {
+    // nimi: "asd,
+    // "hind": 123,
+    // "aktiivne": true,
+    // "kategooria": {"id": 2}
+    // }
 }

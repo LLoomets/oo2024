@@ -1,5 +1,6 @@
-package ee.tlu.proovikontrolltoo;
+package ee.tlu.proovikontrolltoo.Controller;
 
+import ee.tlu.proovikontrolltoo.Entity.Product;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
