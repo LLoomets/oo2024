@@ -10,11 +10,21 @@ public interface ToodeRepository extends JpaRepository<Toode, Long> {
 
     List<Toode> findByHindBetween(double hindStart, double hindEnd); // jpa buddy Find Collection alt lood
 
-    Toode findFirstByHindNotNullOrderByHindDesc(); // find instance
+    // max hinnaga toote leidmine
+    Toode findFirstByHindNotNullOrderByHindDesc(); // find instance, toodecontroller sees
 
-    List<Toode> findByNimiContains(String nimi);
 
-    List<Toode> findByNimiStartsWith(String nimi);
+
+    // Toode sisaldab kindalt tähte või tähe rida, Sisestad o ja leiab kõik mille sees o,
+    // sisestad piim leiab kõik millel piim, aga SUUR ja väike täht on erinevad
+    List<Toode> findByNimiContains(String nimi); // toodecontroller sees
+
+
+
+    // Leiab tooted, mis sisaldavad sisestatud tähte
+    List<Toode> findByNimiStartsWith(String nimi); // toodecontroller sees
+
+
 
     // Tahame listi toodetest, kategooria id järgi
     List<Toode> findByKategooria_Id(Long id); // KategooriaController sees, vahet ei ole kus

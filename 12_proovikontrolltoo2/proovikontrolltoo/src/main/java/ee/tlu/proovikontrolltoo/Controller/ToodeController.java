@@ -40,4 +40,14 @@ public class ToodeController {
     public Toode maxHinnagaToode() {
         return toodeRepository.findFirstByHindNotNullOrderByHindDesc();
     }
+
+    @GetMapping("toode-sisaldab/{nimi}")
+    public List<Toode> leiaToodeSisaldab(@PathVariable String nimi){
+        return toodeRepository.findByNimiContains(nimi);
+    }
+
+    @GetMapping("toode-esimenetaht/{nimi}")
+    public List<Toode> toodeEsimeseTahega(@PathVariable String nimi) {
+        return toodeRepository.findByNimiStartsWith(nimi);
+    }
 }
